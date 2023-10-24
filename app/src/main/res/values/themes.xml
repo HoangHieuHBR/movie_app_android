@@ -1,0 +1,11 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Movie_app_ui" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+
+        <item name="colorPrimaryDark">@color/mainColor</item>
+    </style>
+
+    <style name="Theme.Movie_app_ui" parent="Base.Theme.Movie_app_ui" />
+</resources>
