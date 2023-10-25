@@ -1,0 +1,2224 @@
+diff --git a/.gitignore b/.gitignore
+new file mode 100644
+index 0000000..aa724b7
+--- /dev/null
++++ b/.gitignore
+@@ -0,0 +1,15 @@
++*.iml
++.gradle
++/local.properties
++/.idea/caches
++/.idea/libraries
++/.idea/modules.xml
++/.idea/workspace.xml
++/.idea/navEditor.xml
++/.idea/assetWizardSettings.xml
++.DS_Store
++/build
++/captures
++.externalNativeBuild
++.cxx
++local.properties
+diff --git a/.idea/.gitignore b/.idea/.gitignore
+new file mode 100644
+index 0000000..26d3352
+--- /dev/null
++++ b/.idea/.gitignore
+@@ -0,0 +1,3 @@
++# Default ignored files
++/shelf/
++/workspace.xml
+diff --git a/.idea/compiler.xml b/.idea/compiler.xml
+new file mode 100644
+index 0000000..b589d56
+--- /dev/null
++++ b/.idea/compiler.xml
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="CompilerConfiguration">
++    <bytecodeTargetLevel target="17" />
++  </component>
++</project>
+\ No newline at end of file
+diff --git a/.idea/deploymentTargetDropDown.xml b/.idea/deploymentTargetDropDown.xml
+new file mode 100644
+index 0000000..378a532
+--- /dev/null
++++ b/.idea/deploymentTargetDropDown.xml
+@@ -0,0 +1,17 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="deploymentTargetDropDown">
++    <runningDeviceTargetSelectedWithDropDown>
++      <Target>
++        <type value="RUNNING_DEVICE_TARGET" />
++        <deviceKey>
++          <Key>
++            <type value="VIRTUAL_DEVICE_PATH" />
++            <value value="C:\Users\HoangHieuHBR\.android\avd\Pixel_4_API_33.avd" />
++          </Key>
++        </deviceKey>
++      </Target>
++    </runningDeviceTargetSelectedWithDropDown>
++    <timeTargetWasSelectedWithDropDown value="2023-10-24T08:03:41.840066200Z" />
++  </component>
++</project>
+\ No newline at end of file
+diff --git a/.idea/gradle.xml b/.idea/gradle.xml
+new file mode 100644
+index 0000000..6d89050
+--- /dev/null
++++ b/.idea/gradle.xml
+@@ -0,0 +1,19 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="GradleSettings">
++    <option name="linkedExternalProjectsSettings">
++      <GradleProjectSettings>
++        <option name="testRunner" value="GRADLE" />
++        <option name="distributionType" value="DEFAULT_WRAPPED" />
++        <option name="externalProjectPath" value="$PROJECT_DIR$" />
++        <option name="gradleJvm" value="jbr-17" />
++        <option name="modules">
++          <set>
++            <option value="$PROJECT_DIR$" />
++            <option value="$PROJECT_DIR$/app" />
++          </set>
++        </option>
++      </GradleProjectSettings>
++    </option>
++  </component>
++</project>
+\ No newline at end of file
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+new file mode 100644
+index 0000000..0ad17cb
+--- /dev/null
++++ b/.idea/misc.xml
+@@ -0,0 +1,10 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ExternalStorageConfigurationManager" enabled="true" />
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="jbr-17" project-jdk-type="JavaSDK">
++    <output url="file://$PROJECT_DIR$/build/classes" />
++  </component>
++  <component name="ProjectType">
++    <option name="id" value="Android" />
++  </component>
++</project>
+\ No newline at end of file
+diff --git a/app/.gitignore b/app/.gitignore
+new file mode 100644
+index 0000000..42afabf
+--- /dev/null
++++ b/app/.gitignore
+@@ -0,0 +1 @@
++/build
+\ No newline at end of file
+diff --git a/app/build.gradle.kts b/app/build.gradle.kts
+new file mode 100644
+index 0000000..fb2d4af
+--- /dev/null
++++ b/app/build.gradle.kts
+@@ -0,0 +1,47 @@
++plugins {
++    id("com.android.application")
++}
++
++android {
++    namespace = "com.example.movie_app_ui"
++    compileSdk = 33
++
++    defaultConfig {
++        applicationId = "com.example.movie_app_ui"
++        minSdk = 21
++        targetSdk = 33
++        versionCode = 1
++        versionName = "1.0"
++
++        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
++    }
++
++    buildTypes {
++        release {
++            isMinifyEnabled = false
++            proguardFiles(
++                getDefaultProguardFile("proguard-android-optimize.txt"),
++                "proguard-rules.pro"
++            )
++        }
++    }
++    compileOptions {
++        sourceCompatibility = JavaVersion.VERSION_1_8
++        targetCompatibility = JavaVersion.VERSION_1_8
++    }
++}
++
++dependencies {
++
++    implementation("androidx.appcompat:appcompat:1.6.1")
++    implementation("com.google.android.material:material:1.9.0")
++    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
++    testImplementation("junit:junit:4.13.2")
++    androidTestImplementation("androidx.test.ext:junit:1.1.5")
++    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
++    implementation ("androidx.viewpager2:viewpager2:1.0.0")
++    implementation ("com.github.bumptech.glide:glide:4.12.0")
++    implementation ("com.android.volley:volley:1.2.1")
++    implementation ("com.google.code.gson:gson:2.10.1")
++
++}
+\ No newline at end of file
+diff --git a/app/proguard-rules.pro b/app/proguard-rules.pro
+new file mode 100644
+index 0000000..481bb43
+--- /dev/null
++++ b/app/proguard-rules.pro
+@@ -0,0 +1,21 @@
++# Add project specific ProGuard rules here.
++# You can control the set of applied configuration files using the
++# proguardFiles setting in build.gradle.
++#
++# For more details, see
++#   http://developer.android.com/guide/developing/tools/proguard.html
++
++# If your project uses WebView with JS, uncomment the following
++# and specify the fully qualified class name to the JavaScript interface
++# class:
++#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
++#   public *;
++#}
++
++# Uncomment this to preserve the line number information for
++# debugging stack traces.
++#-keepattributes SourceFile,LineNumberTable
++
++# If you keep the line number information, uncomment this to
++# hide the original source file name.
++#-renamesourcefileattribute SourceFile
+\ No newline at end of file
+diff --git a/app/src/androidTest/java/com/example/movie_app_ui/ExampleInstrumentedTest.java b/app/src/androidTest/java/com/example/movie_app_ui/ExampleInstrumentedTest.java
+new file mode 100644
+index 0000000..2a7519d
+--- /dev/null
++++ b/app/src/androidTest/java/com/example/movie_app_ui/ExampleInstrumentedTest.java
+@@ -0,0 +1,26 @@
++package com.example.movie_app_ui;
++
++import android.content.Context;
++
++import androidx.test.platform.app.InstrumentationRegistry;
++import androidx.test.ext.junit.runners.AndroidJUnit4;
++
++import org.junit.Test;
++import org.junit.runner.RunWith;
++
++import static org.junit.Assert.*;
++
++/**
++ * Instrumented test, which will execute on an Android device.
++ *
++ * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
++ */
++@RunWith(AndroidJUnit4.class)
++public class ExampleInstrumentedTest {
++    @Test
++    public void useAppContext() {
++        // Context of the app under test.
++        Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
++        assertEquals("com.example.movie_app_ui", appContext.getPackageName());
++    }
++}
+\ No newline at end of file
+diff --git a/app/src/main/AndroidManifest.xml b/app/src/main/AndroidManifest.xml
+new file mode 100644
+index 0000000..21a2c4c
+--- /dev/null
++++ b/app/src/main/AndroidManifest.xml
+@@ -0,0 +1,32 @@
++<?xml version="1.0" encoding="utf-8"?>
++<manifest xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:tools="http://schemas.android.com/tools">
++
++    <application
++        android:allowBackup="true"
++        android:dataExtractionRules="@xml/data_extraction_rules"
++        android:fullBackupContent="@xml/backup_rules"
++        android:icon="@mipmap/ic_launcher"
++        android:label="@string/app_name"
++        android:roundIcon="@mipmap/ic_launcher_round"
++        android:supportsRtl="true"
++        android:theme="@style/Theme.Movie_app_ui"
++        tools:targetApi="31">
++        <activity
++            android:name=".activities.MainActivity"
++            android:exported="false" />
++        <activity
++            android:name=".activities.LoginActivity"
++            android:exported="false" />
++        <activity
++            android:name=".activities.IntroActivity"
++            android:exported="true">
++            <intent-filter>
++                <action android:name="android.intent.action.MAIN" />
++
++                <category android:name="android.intent.category.LAUNCHER" />
++            </intent-filter>
++        </activity>
++    </application>
++
++</manifest>
+\ No newline at end of file
+diff --git a/app/src/main/java/com/example/movie_app_ui/activities/IntroActivity.java b/app/src/main/java/com/example/movie_app_ui/activities/IntroActivity.java
+new file mode 100644
+index 0000000..956d165
+--- /dev/null
++++ b/app/src/main/java/com/example/movie_app_ui/activities/IntroActivity.java
+@@ -0,0 +1,23 @@
++package com.example.movie_app_ui.activities;
++
++import androidx.appcompat.app.AppCompatActivity;
++
++import android.content.Intent;
++import android.os.Bundle;
++import android.widget.Button;
++
++import com.example.movie_app_ui.R;
++
++public class IntroActivity extends AppCompatActivity {
++
++    @Override
++    protected void onCreate(Bundle savedInstanceState) {
++        super.onCreate(savedInstanceState);
++        setContentView(R.layout.activity_intro);
++
++        Button getStartedBtn = findViewById(R.id.getStartedBtn);
++        getStartedBtn.setOnClickListener(v->{
++            startActivity(new Intent(this, LoginActivity.class));
++        });
++    }
++}
+\ No newline at end of file
+diff --git a/app/src/main/java/com/example/movie_app_ui/activities/LoginActivity.java b/app/src/main/java/com/example/movie_app_ui/activities/LoginActivity.java
+new file mode 100644
+index 0000000..062c53b
+--- /dev/null
++++ b/app/src/main/java/com/example/movie_app_ui/activities/LoginActivity.java
+@@ -0,0 +1,40 @@
++package com.example.movie_app_ui.activities;
++
++import androidx.appcompat.app.AppCompatActivity;
++
++import android.content.Intent;
++import android.os.Bundle;
++import android.widget.Button;
++import android.widget.EditText;
++import android.widget.Toast;
++
++import com.example.movie_app_ui.R;
++
++public class LoginActivity extends AppCompatActivity {
++    private EditText userEdt, passEdt;
++    private Button loginBtn;
++
++    @Override
++    protected void onCreate(Bundle savedInstanceState) {
++        super.onCreate(savedInstanceState);
++        setContentView(R.layout.activity_login);
++
++        initView();
++    }
++
++    private void initView() {
++        userEdt = findViewById(R.id.editTextUsername);
++        passEdt = findViewById(R.id.editTextPassword);
++        loginBtn = findViewById(R.id.loginBtn);
++
++        loginBtn.setOnClickListener(view -> {
++            if (userEdt.getText().toString().isEmpty() || passEdt.getText().toString().isEmpty()) {
++                Toast.makeText(this, "Please fill your username and password", Toast.LENGTH_SHORT).show();
++            } else if (userEdt.getText().toString().equals("admin") && passEdt.getText().toString().equals("admin")) {
++                startActivity(new Intent(this, MainActivity.class));
++            } else {
++                Toast.makeText(this, "Invalid username or password", Toast.LENGTH_SHORT).show();
++            }
++        });
++    }
++}
+\ No newline at end of file
+diff --git a/app/src/main/java/com/example/movie_app_ui/activities/MainActivity.java b/app/src/main/java/com/example/movie_app_ui/activities/MainActivity.java
+new file mode 100644
+index 0000000..2137f4a
+--- /dev/null
++++ b/app/src/main/java/com/example/movie_app_ui/activities/MainActivity.java
+@@ -0,0 +1,105 @@
++package com.example.movie_app_ui.activities;
++
++import androidx.annotation.NonNull;
++import androidx.appcompat.app.AppCompatActivity;
++import androidx.recyclerview.widget.LinearLayoutManager;
++import androidx.recyclerview.widget.RecyclerView;
++import androidx.viewpager2.widget.CompositePageTransformer;
++import androidx.viewpager2.widget.MarginPageTransformer;
++import androidx.viewpager2.widget.ViewPager2;
++
++import android.os.Bundle;
++import android.os.Handler;
++import android.view.View;
++import android.widget.ProgressBar;
++
++import com.android.volley.RequestQueue;
++import com.android.volley.toolbox.StringRequest;
++import com.example.movie_app_ui.R;
++import com.example.movie_app_ui.adapters.SliderAdapter;
++import com.example.movie_app_ui.domain.SliderItems;
++
++import java.util.ArrayList;
++import java.util.List;
++
++public class MainActivity extends AppCompatActivity {
++    private RecyclerView.Adapter bestMoviesAdapter, upcomingMoviesAdapter, categoryAdapter;
++    private RecyclerView bestMoviesRecyclerView, upcomingMoviesRecyclerView, categoryRecyclerView;
++    private RequestQueue requestQueue;
++    private StringRequest stringBestRequest, stringCategoryRequest, stringUpcomingRequest;
++    private ProgressBar bestLoading, categoryLoading, upcomingLoading;
++    private ViewPager2 sliderView;
++    private Handler slideHandler = new Handler();
++
++    @Override
++    protected void onCreate(Bundle savedInstanceState) {
++        super.onCreate(savedInstanceState);
++        setContentView(R.layout.activity_main);
++
++        initView();
++        banners();
++    }
++
++    private void initView() {
++        sliderView = findViewById(R.id.sliderViewPage);
++        bestMoviesRecyclerView = findViewById(R.id.bestView);
++        bestMoviesRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
++        categoryRecyclerView = findViewById(R.id.categoryView);
++        categoryRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
++        upcomingMoviesRecyclerView = findViewById(R.id.upcomingView);
++        upcomingMoviesRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
++        bestLoading = findViewById(R.id.bestProgressBar);
++        categoryLoading = findViewById(R.id.categoryProgressBar);
++        upcomingLoading = findViewById(R.id.upcomingProgressBar);
++    }
++
++    void banners() {
++        List<SliderItems> sliderItems = new ArrayList<>();
++        sliderItems.add(new SliderItems(R.drawable.wide));
++        sliderItems.add(new SliderItems(R.drawable.wide1));
++        sliderItems.add(new SliderItems(R.drawable.wide3));
++
++        sliderView.setAdapter(new SliderAdapter(sliderItems, sliderView));
++        sliderView.setClipToPadding(false);
++        sliderView.setClipChildren(false);
++        sliderView.setOffscreenPageLimit(3);
++        sliderView.getChildAt(0).setOverScrollMode(RecyclerView.OVER_SCROLL_NEVER);
++
++        CompositePageTransformer compositePageTransformer = new CompositePageTransformer();
++        compositePageTransformer.addTransformer(new MarginPageTransformer(40));
++        compositePageTransformer.addTransformer((page, position) -> {
++            float r = 1 - Math.abs(position);
++            page.setScaleY(0.85f + r * 0.15f);
++        });
++
++        sliderView.setPageTransformer(compositePageTransformer);
++        sliderView.setCurrentItem(1);
++        sliderView.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback(){
++            @Override
++            public void onPageSelected(int position) {
++                super.onPageSelected(position);
++                slideHandler.removeCallbacks(sliderRunnable);
++            }
++        });
++    }
++
++    private Runnable sliderRunnable = new Runnable() {
++        @Override
++        public void run() {
++            sliderView.setCurrentItem(sliderView.getCurrentItem() + 1);
++
++        }
++    };
++
++    @Override
++    protected void onPause() {
++        super.onPause();
++        slideHandler.removeCallbacks(sliderRunnable);
++    }
++
++    @Override
++    protected void onResume() {
++        super.onResume();
++        slideHandler.postDelayed(sliderRunnable, 2000);
++    }
++}
+\ No newline at end of file
+diff --git a/app/src/main/java/com/example/movie_app_ui/adapters/MovieListAdapter.java b/app/src/main/java/com/example/movie_app_ui/adapters/MovieListAdapter.java
+new file mode 100644
+index 0000000..dc67ec1
+--- /dev/null
++++ b/app/src/main/java/com/example/movie_app_ui/adapters/MovieListAdapter.java
+@@ -0,0 +1,4 @@
++package com.example.movie_app_ui.adapters;
++
++public class MovieListAdapter {
++}
+diff --git a/app/src/main/java/com/example/movie_app_ui/adapters/SliderAdapter.java b/app/src/main/java/com/example/movie_app_ui/adapters/SliderAdapter.java
+new file mode 100644
+index 0000000..e82c770
+--- /dev/null
++++ b/app/src/main/java/com/example/movie_app_ui/adapters/SliderAdapter.java
+@@ -0,0 +1,78 @@
++package com.example.movie_app_ui.adapters;
++
++import android.content.Context;
++import android.view.LayoutInflater;
++import android.view.View;
++import android.view.ViewGroup;
++import android.widget.ImageView;
++
++import androidx.annotation.NonNull;
++import androidx.recyclerview.widget.RecyclerView;
++import androidx.viewpager2.widget.ViewPager2;
++
++import com.bumptech.glide.Glide;
++import com.bumptech.glide.load.resource.bitmap.CenterCrop;
++import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
++import com.bumptech.glide.request.RequestOptions;
++import com.example.movie_app_ui.R;
++import com.example.movie_app_ui.domain.SliderItems;
++
++import java.util.List;
++
++public class SliderAdapter extends RecyclerView.Adapter<SliderAdapter.SliderViewHolder> {
++    private List<SliderItems> sliderItems;
++    private ViewPager2 viewPager2;
++    private Context context;
++
++    public SliderAdapter(List<SliderItems> sliderItems, ViewPager2 viewPager2) {
++        this.sliderItems = sliderItems;
++        this.viewPager2 = viewPager2;
++    }
++
++    @NonNull
++    @Override
++    public SliderAdapter.SliderViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
++        context = parent.getContext();
++        return new SliderViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.slide_item_container, parent, false));
++    }
++
++    @Override
++    public void onBindViewHolder(@NonNull SliderAdapter.SliderViewHolder holder, int position) {
++        holder.setImage(sliderItems.get(position));
++        if (position == sliderItems.size() - 2) {
++            viewPager2.post(runnable);
++        }
++    }
++
++    @Override
++    public int getItemCount() {
++        return sliderItems.size();
++    }
++
++    public class SliderViewHolder extends RecyclerView.ViewHolder {
++        private ImageView imageView;
++
++        public SliderViewHolder(@NonNull View itemView) {
++            super(itemView);
++            imageView = itemView.findViewById(R.id.imageSlide);
++        }
++
++        void setImage(SliderItems sliderItem) {
++            RequestOptions requestOptions = new RequestOptions();
++            requestOptions = requestOptions.transform(new CenterCrop(), new RoundedCorners(60));
++
++            Glide.with(context)
++                    .load(sliderItem.getImage())
++                    .apply(requestOptions)
++                    .into(imageView);
++        }
++    }
++
++    private Runnable runnable = new Runnable() {
++        @Override
++        public void run() {
++            sliderItems.addAll(sliderItems);
++            notifyDataSetChanged();
++        }
++    };
++}
+diff --git a/app/src/main/java/com/example/movie_app_ui/domain/SliderItems.java b/app/src/main/java/com/example/movie_app_ui/domain/SliderItems.java
+new file mode 100644
+index 0000000..d708747
+--- /dev/null
++++ b/app/src/main/java/com/example/movie_app_ui/domain/SliderItems.java
+@@ -0,0 +1,17 @@
++package com.example.movie_app_ui.domain;
++
++public class SliderItems {
++    private int image;
++
++    public SliderItems(int image) {
++        this.image = image;
++    }
++
++    public int getImage() {
++        return image;
++    }
++
++    public void setImage(int image) {
++        this.image = image;
++    }
++}
+diff --git a/app/src/main/res/Api.txt b/app/src/main/res/Api.txt
+new file mode 100644
+index 0000000..61856f7
+--- /dev/null
++++ b/app/src/main/res/Api.txt
+@@ -0,0 +1,11 @@
++Api for test:
++
++
++get movies list:
++https://moviesapi.ir/api/v1/movies?page={page}
++
++get detail from a movie:
++https://moviesapi.ir/api/v1/movies/{movie_id}
++
++get genres list:
++https://moviesapi.ir/api/v1/genres
+\ No newline at end of file
+diff --git a/app/src/main/res/drawable-hdpi/back.png b/app/src/main/res/drawable-hdpi/back.png
+new file mode 100644
+index 0000000..7897fcd
+Binary files /dev/null and b/app/src/main/res/drawable-hdpi/back.png differ
+diff --git a/app/src/main/res/drawable-hdpi/btn_1.png b/app/src/main/res/drawable-hdpi/btn_1.png
+new file mode 100644
+index 0000000..8caa84c
+Binary files /dev/null and b/app/src/main/res/drawable-hdpi/btn_1.png differ
+diff --git a/app/src/main/res/drawable-hdpi/btn_2.png b/app/src/main/res/drawable-hdpi/btn_2.png
+new file mode 100644
+index 0000000..1b57d6c
+Binary files /dev/null and b/app/src/main/res/drawable-hdpi/btn_2.png differ
+diff --git a/app/src/main/res/drawable-hdpi/btn_3.png b/app/src/main/res/drawable-hdpi/btn_3.png
+new file mode 100644
+index 0000000..8e88416
+Binary files /dev/null and b/app/src/main/res/drawable-hdpi/btn_3.png differ
+diff --git a/app/src/main/res/drawable-hdpi/btn_4.png b/app/src/main/res/drawable-hdpi/btn_4.png
+new file mode 100644
+index 0000000..e774e84
+Binary files /dev/null and b/app/src/main/res/drawable-hdpi/btn_4.png differ
+diff --git a/app/src/main/res/drawable-hdpi/fav.png b/app/src/main/res/drawable-hdpi/fav.png
+new file mode 100644
+index 0000000..1012e2a
+Binary files /dev/null and b/app/src/main/res/drawable-hdpi/fav.png differ
+diff --git a/app/src/main/res/drawable-hdpi/intro_pic.png b/app/src/main/res/drawable-hdpi/intro_pic.png
+new file mode 100644
+index 0000000..bbed607
+Binary files /dev/null and b/app/src/main/res/drawable-hdpi/intro_pic.png differ
+diff --git a/app/src/main/res/drawable-hdpi/microphone.png b/app/src/main/res/drawable-hdpi/microphone.png
+new file mode 100644
+index 0000000..a0f4868
+Binary files /dev/null and b/app/src/main/res/drawable-hdpi/microphone.png differ
+diff --git a/app/src/main/res/drawable-hdpi/search.png b/app/src/main/res/drawable-hdpi/search.png
+new file mode 100644
+index 0000000..aa088e8
+Binary files /dev/null and b/app/src/main/res/drawable-hdpi/search.png differ
+diff --git a/app/src/main/res/drawable-hdpi/star.png b/app/src/main/res/drawable-hdpi/star.png
+new file mode 100644
+index 0000000..c92e922
+Binary files /dev/null and b/app/src/main/res/drawable-hdpi/star.png differ
+diff --git a/app/src/main/res/drawable-hdpi/time.png b/app/src/main/res/drawable-hdpi/time.png
+new file mode 100644
+index 0000000..e06d93e
+Binary files /dev/null and b/app/src/main/res/drawable-hdpi/time.png differ
+diff --git a/app/src/main/res/drawable-ldpi/back.png b/app/src/main/res/drawable-ldpi/back.png
+new file mode 100644
+index 0000000..517a070
+Binary files /dev/null and b/app/src/main/res/drawable-ldpi/back.png differ
+diff --git a/app/src/main/res/drawable-ldpi/btn_1.png b/app/src/main/res/drawable-ldpi/btn_1.png
+new file mode 100644
+index 0000000..478ce5e
+Binary files /dev/null and b/app/src/main/res/drawable-ldpi/btn_1.png differ
+diff --git a/app/src/main/res/drawable-ldpi/btn_2.png b/app/src/main/res/drawable-ldpi/btn_2.png
+new file mode 100644
+index 0000000..50a932f
+Binary files /dev/null and b/app/src/main/res/drawable-ldpi/btn_2.png differ
+diff --git a/app/src/main/res/drawable-ldpi/btn_3.png b/app/src/main/res/drawable-ldpi/btn_3.png
+new file mode 100644
+index 0000000..c54cda9
+Binary files /dev/null and b/app/src/main/res/drawable-ldpi/btn_3.png differ
+diff --git a/app/src/main/res/drawable-ldpi/btn_4.png b/app/src/main/res/drawable-ldpi/btn_4.png
+new file mode 100644
+index 0000000..68e537f
+Binary files /dev/null and b/app/src/main/res/drawable-ldpi/btn_4.png differ
+diff --git a/app/src/main/res/drawable-ldpi/fav.png b/app/src/main/res/drawable-ldpi/fav.png
+new file mode 100644
+index 0000000..3df947b
+Binary files /dev/null and b/app/src/main/res/drawable-ldpi/fav.png differ
+diff --git a/app/src/main/res/drawable-ldpi/intro_pic.png b/app/src/main/res/drawable-ldpi/intro_pic.png
+new file mode 100644
+index 0000000..c505657
+Binary files /dev/null and b/app/src/main/res/drawable-ldpi/intro_pic.png differ
+diff --git a/app/src/main/res/drawable-ldpi/microphone.png b/app/src/main/res/drawable-ldpi/microphone.png
+new file mode 100644
+index 0000000..bba5af6
+Binary files /dev/null and b/app/src/main/res/drawable-ldpi/microphone.png differ
+diff --git a/app/src/main/res/drawable-ldpi/search.png b/app/src/main/res/drawable-ldpi/search.png
+new file mode 100644
+index 0000000..9018b44
+Binary files /dev/null and b/app/src/main/res/drawable-ldpi/search.png differ
+diff --git a/app/src/main/res/drawable-ldpi/star.png b/app/src/main/res/drawable-ldpi/star.png
+new file mode 100644
+index 0000000..9d5376f
+Binary files /dev/null and b/app/src/main/res/drawable-ldpi/star.png differ
+diff --git a/app/src/main/res/drawable-ldpi/time.png b/app/src/main/res/drawable-ldpi/time.png
+new file mode 100644
+index 0000000..9ddbe5b
+Binary files /dev/null and b/app/src/main/res/drawable-ldpi/time.png differ
+diff --git a/app/src/main/res/drawable-mdpi/back.png b/app/src/main/res/drawable-mdpi/back.png
+new file mode 100644
+index 0000000..10fb7d4
+Binary files /dev/null and b/app/src/main/res/drawable-mdpi/back.png differ
+diff --git a/app/src/main/res/drawable-mdpi/btn_1.png b/app/src/main/res/drawable-mdpi/btn_1.png
+new file mode 100644
+index 0000000..cdc4e91
+Binary files /dev/null and b/app/src/main/res/drawable-mdpi/btn_1.png differ
+diff --git a/app/src/main/res/drawable-mdpi/btn_2.png b/app/src/main/res/drawable-mdpi/btn_2.png
+new file mode 100644
+index 0000000..9e70126
+Binary files /dev/null and b/app/src/main/res/drawable-mdpi/btn_2.png differ
+diff --git a/app/src/main/res/drawable-mdpi/btn_3.png b/app/src/main/res/drawable-mdpi/btn_3.png
+new file mode 100644
+index 0000000..c3ab294
+Binary files /dev/null and b/app/src/main/res/drawable-mdpi/btn_3.png differ
+diff --git a/app/src/main/res/drawable-mdpi/btn_4.png b/app/src/main/res/drawable-mdpi/btn_4.png
+new file mode 100644
+index 0000000..6f3cb2b
+Binary files /dev/null and b/app/src/main/res/drawable-mdpi/btn_4.png differ
+diff --git a/app/src/main/res/drawable-mdpi/fav.png b/app/src/main/res/drawable-mdpi/fav.png
+new file mode 100644
+index 0000000..57c304e
+Binary files /dev/null and b/app/src/main/res/drawable-mdpi/fav.png differ
+diff --git a/app/src/main/res/drawable-mdpi/intro_pic.png b/app/src/main/res/drawable-mdpi/intro_pic.png
+new file mode 100644
+index 0000000..d7c149e
+Binary files /dev/null and b/app/src/main/res/drawable-mdpi/intro_pic.png differ
+diff --git a/app/src/main/res/drawable-mdpi/microphone.png b/app/src/main/res/drawable-mdpi/microphone.png
+new file mode 100644
+index 0000000..3d26a9f
+Binary files /dev/null and b/app/src/main/res/drawable-mdpi/microphone.png differ
+diff --git a/app/src/main/res/drawable-mdpi/search.png b/app/src/main/res/drawable-mdpi/search.png
+new file mode 100644
+index 0000000..1568f15
+Binary files /dev/null and b/app/src/main/res/drawable-mdpi/search.png differ
+diff --git a/app/src/main/res/drawable-mdpi/star.png b/app/src/main/res/drawable-mdpi/star.png
+new file mode 100644
+index 0000000..7f74a01
+Binary files /dev/null and b/app/src/main/res/drawable-mdpi/star.png differ
+diff --git a/app/src/main/res/drawable-mdpi/time.png b/app/src/main/res/drawable-mdpi/time.png
+new file mode 100644
+index 0000000..a334465
+Binary files /dev/null and b/app/src/main/res/drawable-mdpi/time.png differ
+diff --git a/app/src/main/res/drawable-v24/ic_launcher_foreground.xml b/app/src/main/res/drawable-v24/ic_launcher_foreground.xml
+new file mode 100644
+index 0000000..2b068d1
+--- /dev/null
++++ b/app/src/main/res/drawable-v24/ic_launcher_foreground.xml
+@@ -0,0 +1,30 @@
++<vector xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:aapt="http://schemas.android.com/aapt"
++    android:width="108dp"
++    android:height="108dp"
++    android:viewportWidth="108"
++    android:viewportHeight="108">
++    <path android:pathData="M31,63.928c0,0 6.4,-11 12.1,-13.1c7.2,-2.6 26,-1.4 26,-1.4l38.1,38.1L107,108.928l-32,-1L31,63.928z">
++        <aapt:attr name="android:fillColor">
++            <gradient
++                android:endX="85.84757"
++                android:endY="92.4963"
++                android:startX="42.9492"
++                android:startY="49.59793"
++                android:type="linear">
++                <item
++                    android:color="#44000000"
++                    android:offset="0.0" />
++                <item
++                    android:color="#00000000"
++                    android:offset="1.0" />
++            </gradient>
++        </aapt:attr>
++    </path>
++    <path
++        android:fillColor="#FFFFFF"
++        android:fillType="nonZero"
++        android:pathData="M65.3,45.828l3.8,-6.6c0.2,-0.4 0.1,-0.9 -0.3,-1.1c-0.4,-0.2 -0.9,-0.1 -1.1,0.3l-3.9,6.7c-6.3,-2.8 -13.4,-2.8 -19.7,0l-3.9,-6.7c-0.2,-0.4 -0.7,-0.5 -1.1,-0.3C38.8,38.328 38.7,38.828 38.9,39.228l3.8,6.6C36.2,49.428 31.7,56.028 31,63.928h46C76.3,56.028 71.8,49.428 65.3,45.828zM43.4,57.328c-0.8,0 -1.5,-0.5 -1.8,-1.2c-0.3,-0.7 -0.1,-1.5 0.4,-2.1c0.5,-0.5 1.4,-0.7 2.1,-0.4c0.7,0.3 1.2,1 1.2,1.8C45.3,56.528 44.5,57.328 43.4,57.328L43.4,57.328zM64.6,57.328c-0.8,0 -1.5,-0.5 -1.8,-1.2s-0.1,-1.5 0.4,-2.1c0.5,-0.5 1.4,-0.7 2.1,-0.4c0.7,0.3 1.2,1 1.2,1.8C66.5,56.528 65.6,57.328 64.6,57.328L64.6,57.328z"
++        android:strokeWidth="1"
++        android:strokeColor="#00000000" />
++</vector>
+\ No newline at end of file
+diff --git a/app/src/main/res/drawable-xhdpi/back.png b/app/src/main/res/drawable-xhdpi/back.png
+new file mode 100644
+index 0000000..1f40dc6
+Binary files /dev/null and b/app/src/main/res/drawable-xhdpi/back.png differ
+diff --git a/app/src/main/res/drawable-xhdpi/btn_1.png b/app/src/main/res/drawable-xhdpi/btn_1.png
+new file mode 100644
+index 0000000..013ac8e
+Binary files /dev/null and b/app/src/main/res/drawable-xhdpi/btn_1.png differ
+diff --git a/app/src/main/res/drawable-xhdpi/btn_2.png b/app/src/main/res/drawable-xhdpi/btn_2.png
+new file mode 100644
+index 0000000..f3e4054
+Binary files /dev/null and b/app/src/main/res/drawable-xhdpi/btn_2.png differ
+diff --git a/app/src/main/res/drawable-xhdpi/btn_3.png b/app/src/main/res/drawable-xhdpi/btn_3.png
+new file mode 100644
+index 0000000..c297acc
+Binary files /dev/null and b/app/src/main/res/drawable-xhdpi/btn_3.png differ
+diff --git a/app/src/main/res/drawable-xhdpi/btn_4.png b/app/src/main/res/drawable-xhdpi/btn_4.png
+new file mode 100644
+index 0000000..8f778df
+Binary files /dev/null and b/app/src/main/res/drawable-xhdpi/btn_4.png differ
+diff --git a/app/src/main/res/drawable-xhdpi/fav.png b/app/src/main/res/drawable-xhdpi/fav.png
+new file mode 100644
+index 0000000..de92cc3
+Binary files /dev/null and b/app/src/main/res/drawable-xhdpi/fav.png differ
+diff --git a/app/src/main/res/drawable-xhdpi/intro_pic.png b/app/src/main/res/drawable-xhdpi/intro_pic.png
+new file mode 100644
+index 0000000..222d9ec
+Binary files /dev/null and b/app/src/main/res/drawable-xhdpi/intro_pic.png differ
+diff --git a/app/src/main/res/drawable-xhdpi/microphone.png b/app/src/main/res/drawable-xhdpi/microphone.png
+new file mode 100644
+index 0000000..bb89817
+Binary files /dev/null and b/app/src/main/res/drawable-xhdpi/microphone.png differ
+diff --git a/app/src/main/res/drawable-xhdpi/search.png b/app/src/main/res/drawable-xhdpi/search.png
+new file mode 100644
+index 0000000..edd4f06
+Binary files /dev/null and b/app/src/main/res/drawable-xhdpi/search.png differ
+diff --git a/app/src/main/res/drawable-xhdpi/star.png b/app/src/main/res/drawable-xhdpi/star.png
+new file mode 100644
+index 0000000..77c2da1
+Binary files /dev/null and b/app/src/main/res/drawable-xhdpi/star.png differ
+diff --git a/app/src/main/res/drawable-xhdpi/time.png b/app/src/main/res/drawable-xhdpi/time.png
+new file mode 100644
+index 0000000..e001c81
+Binary files /dev/null and b/app/src/main/res/drawable-xhdpi/time.png differ
+diff --git a/app/src/main/res/drawable-xxhdpi/back.png b/app/src/main/res/drawable-xxhdpi/back.png
+new file mode 100644
+index 0000000..19b9960
+Binary files /dev/null and b/app/src/main/res/drawable-xxhdpi/back.png differ
+diff --git a/app/src/main/res/drawable-xxhdpi/btn_1.png b/app/src/main/res/drawable-xxhdpi/btn_1.png
+new file mode 100644
+index 0000000..6a999a7
+Binary files /dev/null and b/app/src/main/res/drawable-xxhdpi/btn_1.png differ
+diff --git a/app/src/main/res/drawable-xxhdpi/btn_2.png b/app/src/main/res/drawable-xxhdpi/btn_2.png
+new file mode 100644
+index 0000000..29acfb8
+Binary files /dev/null and b/app/src/main/res/drawable-xxhdpi/btn_2.png differ
+diff --git a/app/src/main/res/drawable-xxhdpi/btn_3.png b/app/src/main/res/drawable-xxhdpi/btn_3.png
+new file mode 100644
+index 0000000..6a86748
+Binary files /dev/null and b/app/src/main/res/drawable-xxhdpi/btn_3.png differ
+diff --git a/app/src/main/res/drawable-xxhdpi/btn_4.png b/app/src/main/res/drawable-xxhdpi/btn_4.png
+new file mode 100644
+index 0000000..b08a819
+Binary files /dev/null and b/app/src/main/res/drawable-xxhdpi/btn_4.png differ
+diff --git a/app/src/main/res/drawable-xxhdpi/fav.png b/app/src/main/res/drawable-xxhdpi/fav.png
+new file mode 100644
+index 0000000..7f4e9a6
+Binary files /dev/null and b/app/src/main/res/drawable-xxhdpi/fav.png differ
+diff --git a/app/src/main/res/drawable-xxhdpi/intro_pic.png b/app/src/main/res/drawable-xxhdpi/intro_pic.png
+new file mode 100644
+index 0000000..07e6843
+Binary files /dev/null and b/app/src/main/res/drawable-xxhdpi/intro_pic.png differ
+diff --git a/app/src/main/res/drawable-xxhdpi/microphone.png b/app/src/main/res/drawable-xxhdpi/microphone.png
+new file mode 100644
+index 0000000..e323d48
+Binary files /dev/null and b/app/src/main/res/drawable-xxhdpi/microphone.png differ
+diff --git a/app/src/main/res/drawable-xxhdpi/search.png b/app/src/main/res/drawable-xxhdpi/search.png
+new file mode 100644
+index 0000000..70294ab
+Binary files /dev/null and b/app/src/main/res/drawable-xxhdpi/search.png differ
+diff --git a/app/src/main/res/drawable-xxhdpi/star.png b/app/src/main/res/drawable-xxhdpi/star.png
+new file mode 100644
+index 0000000..db45016
+Binary files /dev/null and b/app/src/main/res/drawable-xxhdpi/star.png differ
+diff --git a/app/src/main/res/drawable-xxhdpi/time.png b/app/src/main/res/drawable-xxhdpi/time.png
+new file mode 100644
+index 0000000..65a9bcd
+Binary files /dev/null and b/app/src/main/res/drawable-xxhdpi/time.png differ
+diff --git a/app/src/main/res/drawable-xxxhdpi/back.png b/app/src/main/res/drawable-xxxhdpi/back.png
+new file mode 100644
+index 0000000..6e26bc9
+Binary files /dev/null and b/app/src/main/res/drawable-xxxhdpi/back.png differ
+diff --git a/app/src/main/res/drawable-xxxhdpi/btn_1.png b/app/src/main/res/drawable-xxxhdpi/btn_1.png
+new file mode 100644
+index 0000000..c91a477
+Binary files /dev/null and b/app/src/main/res/drawable-xxxhdpi/btn_1.png differ
+diff --git a/app/src/main/res/drawable-xxxhdpi/btn_2.png b/app/src/main/res/drawable-xxxhdpi/btn_2.png
+new file mode 100644
+index 0000000..8df1810
+Binary files /dev/null and b/app/src/main/res/drawable-xxxhdpi/btn_2.png differ
+diff --git a/app/src/main/res/drawable-xxxhdpi/btn_3.png b/app/src/main/res/drawable-xxxhdpi/btn_3.png
+new file mode 100644
+index 0000000..31d343b
+Binary files /dev/null and b/app/src/main/res/drawable-xxxhdpi/btn_3.png differ
+diff --git a/app/src/main/res/drawable-xxxhdpi/btn_4.png b/app/src/main/res/drawable-xxxhdpi/btn_4.png
+new file mode 100644
+index 0000000..0cf9cae
+Binary files /dev/null and b/app/src/main/res/drawable-xxxhdpi/btn_4.png differ
+diff --git a/app/src/main/res/drawable-xxxhdpi/fav.png b/app/src/main/res/drawable-xxxhdpi/fav.png
+new file mode 100644
+index 0000000..a4231c2
+Binary files /dev/null and b/app/src/main/res/drawable-xxxhdpi/fav.png differ
+diff --git a/app/src/main/res/drawable-xxxhdpi/intro_pic.png b/app/src/main/res/drawable-xxxhdpi/intro_pic.png
+new file mode 100644
+index 0000000..a2ce650
+Binary files /dev/null and b/app/src/main/res/drawable-xxxhdpi/intro_pic.png differ
+diff --git a/app/src/main/res/drawable-xxxhdpi/microphone.png b/app/src/main/res/drawable-xxxhdpi/microphone.png
+new file mode 100644
+index 0000000..d08815b
+Binary files /dev/null and b/app/src/main/res/drawable-xxxhdpi/microphone.png differ
+diff --git a/app/src/main/res/drawable-xxxhdpi/search.png b/app/src/main/res/drawable-xxxhdpi/search.png
+new file mode 100644
+index 0000000..d74e099
+Binary files /dev/null and b/app/src/main/res/drawable-xxxhdpi/search.png differ
+diff --git a/app/src/main/res/drawable-xxxhdpi/star.png b/app/src/main/res/drawable-xxxhdpi/star.png
+new file mode 100644
+index 0000000..37bd5ab
+Binary files /dev/null and b/app/src/main/res/drawable-xxxhdpi/star.png differ
+diff --git a/app/src/main/res/drawable-xxxhdpi/time.png b/app/src/main/res/drawable-xxxhdpi/time.png
+new file mode 100644
+index 0000000..92c4bba
+Binary files /dev/null and b/app/src/main/res/drawable-xxxhdpi/time.png differ
+diff --git a/app/src/main/res/drawable/edittext_bg.xml b/app/src/main/res/drawable/edittext_bg.xml
+new file mode 100644
+index 0000000..9b8b6b4
+--- /dev/null
++++ b/app/src/main/res/drawable/edittext_bg.xml
+@@ -0,0 +1,10 @@
++<?xml version="1.0" encoding="utf-8"?>
++<selector xmlns:android="http://schemas.android.com/apk/res/android">
++<item>
++    <shape android:shape="rectangle">
++        <solid android:color="@color/darkBlue"/>
++        <corners android:radius="50dp"/>
++
++    </shape>
++</item>
++</selector>
+\ No newline at end of file
+diff --git a/app/src/main/res/drawable/gradient_background.xml b/app/src/main/res/drawable/gradient_background.xml
+new file mode 100644
+index 0000000..28fe446
+--- /dev/null
++++ b/app/src/main/res/drawable/gradient_background.xml
+@@ -0,0 +1,10 @@
++<?xml version="1.0" encoding="utf-8"?>
++<selector xmlns:android="http://schemas.android.com/apk/res/android">
++    <item>
++        <shape android:shape="rectangle">
++            <gradient android:startColor="#00FFFFFF"
++                android:endColor="@color/mainColor"
++                android:angle= "270"/>
++        </shape>
++    </item>
++</selector>
+\ No newline at end of file
+diff --git a/app/src/main/res/drawable/ic_launcher_background.xml b/app/src/main/res/drawable/ic_launcher_background.xml
+new file mode 100644
+index 0000000..07d5da9
+--- /dev/null
++++ b/app/src/main/res/drawable/ic_launcher_background.xml
+@@ -0,0 +1,170 @@
++<?xml version="1.0" encoding="utf-8"?>
++<vector xmlns:android="http://schemas.android.com/apk/res/android"
++    android:width="108dp"
++    android:height="108dp"
++    android:viewportWidth="108"
++    android:viewportHeight="108">
++    <path
++        android:fillColor="#3DDC84"
++        android:pathData="M0,0h108v108h-108z" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M9,0L9,108"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M19,0L19,108"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M29,0L29,108"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M39,0L39,108"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M49,0L49,108"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M59,0L59,108"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M69,0L69,108"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M79,0L79,108"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M89,0L89,108"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M99,0L99,108"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M0,9L108,9"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M0,19L108,19"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M0,29L108,29"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M0,39L108,39"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M0,49L108,49"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M0,59L108,59"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M0,69L108,69"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M0,79L108,79"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M0,89L108,89"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M0,99L108,99"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M19,29L89,29"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M19,39L89,39"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M19,49L89,49"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M19,59L89,59"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M19,69L89,69"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M19,79L89,79"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M29,19L29,89"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M39,19L39,89"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M49,19L49,89"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M59,19L59,89"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M69,19L69,89"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M79,19L79,89"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++</vector>
+diff --git a/app/src/main/res/drawable/orange_btn_bg.xml b/app/src/main/res/drawable/orange_btn_bg.xml
+new file mode 100644
+index 0000000..e61879d
+--- /dev/null
++++ b/app/src/main/res/drawable/orange_btn_bg.xml
+@@ -0,0 +1,9 @@
++<?xml version="1.0" encoding="utf-8"?>
++<selector xmlns:android="http://schemas.android.com/apk/res/android">
++<item>
++    <shape android:shape="rectangle">
++        <solid android:color="@color/orange"/>
++        <corners android:radius="50dp"/>
++    </shape>
++</item>
++</selector>
+\ No newline at end of file
+diff --git a/app/src/main/res/drawable/wide.jpg b/app/src/main/res/drawable/wide.jpg
+new file mode 100644
+index 0000000..5874218
+Binary files /dev/null and b/app/src/main/res/drawable/wide.jpg differ
+diff --git a/app/src/main/res/drawable/wide1.jpg b/app/src/main/res/drawable/wide1.jpg
+new file mode 100644
+index 0000000..6f0a64b
+Binary files /dev/null and b/app/src/main/res/drawable/wide1.jpg differ
+diff --git a/app/src/main/res/drawable/wide3.jpg b/app/src/main/res/drawable/wide3.jpg
+new file mode 100644
+index 0000000..19ab2ef
+Binary files /dev/null and b/app/src/main/res/drawable/wide3.jpg differ
+diff --git a/app/src/main/res/layout/activity_intro.xml b/app/src/main/res/layout/activity_intro.xml
+new file mode 100644
+index 0000000..3b34619
+--- /dev/null
++++ b/app/src/main/res/layout/activity_intro.xml
+@@ -0,0 +1,102 @@
++<?xml version="1.0" encoding="utf-8"?>
++<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    xmlns:tools="http://schemas.android.com/tools"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    android:background="@color/mainColor"
++    tools:context=".activities.IntroActivity">
++
++
++    <ScrollView
++        android:layout_width="match_parent"
++        android:layout_height="wrap_content"
++        tools:ignore="MissingConstraints"
++        tools:layout_editor_absoluteX="0dp"
++        tools:layout_editor_absoluteY="0dp">
++
++        <LinearLayout
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:orientation="vertical">
++
++
++            <androidx.constraintlayout.widget.ConstraintLayout
++                android:layout_width="match_parent"
++                android:layout_height="match_parent">
++
++                <ImageView
++                    android:id="@+id/imageView"
++                    android:layout_width="match_parent"
++                    android:layout_height="wrap_content"
++                    android:src="@drawable/intro_pic"
++                    app:layout_constraintEnd_toEndOf="parent"
++                    app:layout_constraintStart_toStartOf="parent"
++                    app:layout_constraintTop_toTopOf="parent" />
++
++                <ImageView
++                    android:id="@+id/imageView2"
++                    android:layout_width="0dp"
++                    android:layout_height="100dp"
++                    android:src="@drawable/gradient_background"
++                    app:layout_constraintBottom_toBottomOf="@+id/imageView"
++                    app:layout_constraintEnd_toEndOf="parent"
++                    app:layout_constraintStart_toStartOf="parent" />
++
++            </androidx.constraintlayout.widget.ConstraintLayout>
++
++            <LinearLayout
++                android:layout_width="match_parent"
++                android:layout_height="match_parent"
++                android:layout_marginStart="24dp"
++                android:layout_marginTop="8dp"
++                android:layout_marginEnd="24dp"
++                android:orientation="vertical">
++
++                <TextView
++                    android:id="@+id/textView"
++                    android:layout_width="match_parent"
++                    android:layout_height="wrap_content"
++                    android:text="Discover Your"
++                    android:textColor="@color/white"
++                    android:textSize="27sp" />
++
++                <TextView
++                    android:id="@+id/textView2"
++                    android:layout_width="match_parent"
++                    android:layout_height="wrap_content"
++                    android:text="Favorite Show"
++                    android:textColor="@color/orange"
++                    android:textSize="27sp" />
++
++                <TextView
++                    android:id="@+id/textView3"
++                    android:layout_width="match_parent"
++                    android:layout_height="wrap_content"
++                    android:text="Watch Now or Watch Later"
++                    android:textColor="@color/white"
++                    android:textSize="27sp" />
++
++                <TextView
++                    android:id="@+id/textView4"
++                    android:layout_width="match_parent"
++                    android:layout_height="wrap_content"
++                    android:text="you can browse movies and shows by genre, search for specific title, or check out our recommendation for you"
++                    android:textColor="@color/subTitleColor"
++                    android:textSize="17sp" />
++
++                <androidx.appcompat.widget.AppCompatButton
++                    android:id="@+id/getStartedBtn"
++                    style="@android:style/Widget.Button"
++                    android:layout_width="match_parent"
++                    android:layout_height="wrap_content"
++                    android:layout_marginTop="8dp"
++                    android:background="@drawable/orange_btn_bg"
++                    android:text="Get Started"
++                    android:textColor="@color/white"
++                    android:textSize="18sp" />
++            </LinearLayout>
++        </LinearLayout>
++    </ScrollView>
++
++</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+diff --git a/app/src/main/res/layout/activity_login.xml b/app/src/main/res/layout/activity_login.xml
+new file mode 100644
+index 0000000..b333ed6
+--- /dev/null
++++ b/app/src/main/res/layout/activity_login.xml
+@@ -0,0 +1,107 @@
++<?xml version="1.0" encoding="utf-8"?>
++<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:tools="http://schemas.android.com/tools"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    android:background="@color/mainColor"
++    android:focusable="true"
++    android:focusableInTouchMode="true"
++    tools:context=".activities.LoginActivity">
++
++    <ScrollView
++        android:layout_width="match_parent"
++        android:layout_height="match_parent">
++
++        <LinearLayout
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:orientation="vertical">
++
++            <TextView
++                android:id="@+id/textView5"
++                android:layout_width="match_parent"
++                android:layout_height="wrap_content"
++                android:layout_marginStart="32dp"
++                android:layout_marginTop="128dp"
++                android:text="Log in"
++                android:textColor="@color/white"
++                android:textSize="50sp"
++                android:textStyle="bold" />
++
++            <EditText
++                android:id="@+id/editTextUsername"
++                android:layout_width="match_parent"
++                android:layout_height="50dp"
++                android:layout_marginStart="32dp"
++                android:layout_marginTop="128dp"
++                android:layout_marginEnd="32dp"
++                android:background="@drawable/edittext_bg"
++                android:ems="10"
++                android:hint="UserName"
++                android:inputType="text"
++                android:textAlignment="center"
++                android:textColor="@color/white"
++                android:textColorHint="@color/white"
++               />
++
++            <EditText
++                android:id="@+id/editTextPassword"
++                android:layout_width="match_parent"
++                android:layout_height="50dp"
++                android:layout_marginStart="32dp"
++                android:layout_marginTop="32dp"
++                android:layout_marginEnd="32dp"
++                android:background="@drawable/edittext_bg"
++                android:ems="10"
++                android:hint="Password"
++                android:inputType="textPassword"
++                android:textAlignment="center"
++                android:textColor="@color/white"
++                android:textColorHint="@color/white"
++               />
++
++            <TextView
++                android:id="@+id/textView6"
++                android:layout_width="match_parent"
++                android:layout_height="wrap_content"
++                android:layout_marginTop="16dp"
++                android:text="Forget Your Password?"
++                android:textAlignment="center"
++                android:textColor="@color/white"
++                android:textSize="16sp" />
++
++            <androidx.appcompat.widget.AppCompatButton
++                android:id="@+id/loginBtn"
++                style="@android:style/Widget.Button"
++                android:layout_width="match_parent"
++                android:layout_height="wrap_content"
++                android:layout_marginHorizontal="32dp"
++                android:layout_marginTop="64dp"
++                android:background="@drawable/orange_btn_bg"
++                android:text="Login"
++                android:textColor="@color/white"
++                android:textSize="18sp"
++                android:textStyle="bold" />
++
++            <TextView
++                android:id="@+id/textView7"
++                android:layout_width="match_parent"
++                android:layout_height="wrap_content"
++                android:layout_marginTop="32dp"
++                android:text="Don't have an account"
++                android:textAlignment="center"
++                android:textColor="@color/white"
++                android:textSize="16sp" />
++
++            <TextView
++                android:id="@+id/textView8"
++                android:layout_width="match_parent"
++                android:layout_height="wrap_content"
++                android:text="Register Now"
++                android:textAlignment="center"
++                android:textColor="@color/white"
++                android:textSize="16sp"
++                android:textStyle="bold" />
++        </LinearLayout>
++    </ScrollView>
++</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+diff --git a/app/src/main/res/layout/activity_main.xml b/app/src/main/res/layout/activity_main.xml
+new file mode 100644
+index 0000000..d0aa6b6
+--- /dev/null
++++ b/app/src/main/res/layout/activity_main.xml
+@@ -0,0 +1,284 @@
++<?xml version="1.0" encoding="utf-8"?>
++<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    xmlns:tools="http://schemas.android.com/tools"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    android:background="@color/mainColor"
++    tools:context=".activities.MainActivity">
++
++    <ScrollView
++        android:layout_width="match_parent"
++        android:layout_height="match_parent">
++
++        <LinearLayout
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:orientation="vertical">
++
++            <EditText
++                android:id="@+id/editTextText"
++                android:layout_width="match_parent"
++                android:layout_height="50dp"
++                android:layout_margin="16dp"
++                android:background="@drawable/edittext_bg"
++                android:drawableStart="@drawable/search"
++                android:drawableEnd="@drawable/microphone"
++                android:drawablePadding="8dp"
++                android:ems="10"
++                android:hint="Search Movies..."
++                android:inputType="text"
++                android:padding="12dp"
++                android:textColorHint="@color/white" />
++
++            <androidx.constraintlayout.widget.ConstraintLayout
++                android:layout_width="match_parent"
++                android:layout_height="200dp">
++
++                <androidx.viewpager2.widget.ViewPager2
++                    android:id="@+id/sliderViewPage"
++                    android:layout_width="match_parent"
++                    android:layout_height="match_parent"
++                    android:paddingHorizontal="60dp"
++                    app:layout_constraintBottom_toBottomOf="parent"
++                    app:layout_constraintEnd_toEndOf="parent"
++                    app:layout_constraintStart_toStartOf="parent"
++                    app:layout_constraintTop_toTopOf="parent" />
++            </androidx.constraintlayout.widget.ConstraintLayout>
++
++            <TextView
++                android:id="@+id/textView9"
++                android:layout_width="match_parent"
++                android:layout_height="wrap_content"
++                android:layout_marginStart="16dp"
++                android:layout_marginTop="24dp"
++                android:layout_marginBottom="12dp"
++                android:text="Best Movies"
++                android:textColor="@color/yellow"
++                android:textSize="18sp"
++                android:textStyle="bold" />
++
++            <androidx.constraintlayout.widget.ConstraintLayout
++                android:layout_width="match_parent"
++                android:layout_height="match_parent">
++
++                <androidx.recyclerview.widget.RecyclerView
++                    android:id="@+id/bestView"
++                    android:layout_width="match_parent"
++                    android:layout_height="match_parent"
++                    android:clipToPadding="false"
++                    android:paddingHorizontal="12dp"
++                    app:layout_constraintBottom_toBottomOf="parent"
++                    app:layout_constraintEnd_toEndOf="parent"
++                    app:layout_constraintStart_toStartOf="parent"
++                    app:layout_constraintTop_toTopOf="parent" />
++
++                <ProgressBar
++                    android:id="@+id/bestProgressBar"
++                    style="?android:attr/progressBarStyle"
++                    android:layout_width="wrap_content"
++                    android:layout_height="wrap_content"
++                    app:layout_constraintBottom_toBottomOf="parent"
++                    app:layout_constraintEnd_toEndOf="parent"
++                    app:layout_constraintStart_toStartOf="parent"
++                    app:layout_constraintTop_toTopOf="parent" />
++            </androidx.constraintlayout.widget.ConstraintLayout>
++
++            <TextView
++                android:id="@+id/textView10"
++                android:layout_width="match_parent"
++                android:layout_height="wrap_content"
++                android:layout_marginStart="16dp"
++                android:layout_marginTop="24dp"
++                android:layout_marginBottom="12dp"
++                android:text="Category"
++                android:textColor="@color/yellow"
++                android:textSize="18sp"
++                android:textStyle="bold" />
++
++            <androidx.constraintlayout.widget.ConstraintLayout
++                android:layout_width="match_parent"
++                android:layout_height="match_parent">
++
++                <androidx.recyclerview.widget.RecyclerView
++                    android:id="@+id/categoryView"
++                    android:layout_width="match_parent"
++                    android:layout_height="match_parent"
++                    android:clipToPadding="false"
++                    android:paddingHorizontal="12dp"
++                    app:layout_constraintBottom_toBottomOf="parent"
++                    app:layout_constraintEnd_toEndOf="parent"
++                    app:layout_constraintStart_toStartOf="parent"
++                    app:layout_constraintTop_toTopOf="parent" />
++
++                <ProgressBar
++                    android:id="@+id/categoryProgressBar"
++                    style="?android:attr/progressBarStyle"
++                    android:layout_width="wrap_content"
++                    android:layout_height="wrap_content"
++                    app:layout_constraintBottom_toBottomOf="parent"
++                    app:layout_constraintEnd_toEndOf="parent"
++                    app:layout_constraintStart_toStartOf="parent"
++                    app:layout_constraintTop_toTopOf="parent" />
++            </androidx.constraintlayout.widget.ConstraintLayout>
++
++            <TextView
++                android:id="@+id/textView11"
++                android:layout_width="match_parent"
++                android:layout_height="wrap_content"
++                android:layout_marginStart="16dp"
++                android:layout_marginTop="24dp"
++                android:layout_marginBottom="12dp"
++                android:text="Upcoming Movies"
++                android:textColor="@color/yellow"
++                android:textSize="18sp"
++                android:textStyle="bold" />
++
++            <androidx.constraintlayout.widget.ConstraintLayout
++                android:layout_width="match_parent"
++                android:layout_height="match_parent">
++
++                <androidx.recyclerview.widget.RecyclerView
++                    android:id="@+id/upcomingView"
++                    android:layout_width="match_parent"
++                    android:layout_height="0dp"
++                    android:clipToPadding="false"
++                    android:paddingHorizontal="12dp"
++                    android:paddingBottom="70dp"
++                    app:layout_constraintBottom_toBottomOf="parent"
++                    app:layout_constraintEnd_toEndOf="parent"
++                    app:layout_constraintStart_toStartOf="parent"
++                    app:layout_constraintTop_toTopOf="parent" />
++
++                <ProgressBar
++                    android:id="@+id/upcomingProgressBar"
++                    style="?android:attr/progressBarStyle"
++                    android:layout_width="wrap_content"
++                    android:layout_height="wrap_content"
++                    app:layout_constraintBottom_toBottomOf="parent"
++                    app:layout_constraintEnd_toEndOf="@+id/upcomingView"
++                    app:layout_constraintStart_toStartOf="@+id/upcomingView"
++                    app:layout_constraintTop_toTopOf="parent" />
++            </androidx.constraintlayout.widget.ConstraintLayout>
++
++        </LinearLayout>
++    </ScrollView>
++
++    <androidx.coordinatorlayout.widget.CoordinatorLayout
++        android:layout_width="match_parent"
++        android:layout_height="100dp"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent">
++
++        <com.google.android.material.bottomappbar.BottomAppBar
++            android:layout_width="match_parent"
++            android:layout_height="60dp"
++            android:layout_gravity="bottom"
++            android:backgroundTint="@color/darkBlue">
++
++            <LinearLayout
++                android:layout_width="match_parent"
++                android:layout_height="match_parent"
++                android:orientation="horizontal">
++
++                <LinearLayout
++                    android:layout_width="0dp"
++                    android:layout_height="match_parent"
++                    android:layout_weight="0.25"
++                    android:orientation="vertical">
++
++                    <ImageView
++                        android:id="@+id/explorerTab"
++                        android:layout_width="24dp"
++                        android:layout_height="24dp"
++                        android:layout_gravity="center"
++                        android:layout_margin="5dp"
++                        android:src="@drawable/btn_1"
++                        app:tint="@color/white" />
++
++                    <TextView
++                        android:id="@+id/explorerTextView"
++                        android:layout_width="match_parent"
++                        android:layout_height="wrap_content"
++                        android:text="Explorer"
++                        android:textAlignment="center"
++                        android:textColor="@color/white" />
++                </LinearLayout>
++
++                <LinearLayout
++                    android:layout_width="0dp"
++                    android:layout_height="match_parent"
++                    android:layout_weight="0.25"
++                    android:orientation="vertical">
++
++                    <ImageView
++                        android:id="@+id/favoriteTab"
++                        android:layout_width="24dp"
++                        android:layout_height="24dp"
++                        android:layout_gravity="center"
++                        android:layout_margin="5dp"
++                        android:src="@drawable/btn_2"
++                        app:tint="@color/white" />
++
++                    <TextView
++                        android:id="@+id/favoriteTextView"
++                        android:layout_width="match_parent"
++                        android:layout_height="wrap_content"
++                        android:text="Favorite"
++                        android:textAlignment="center"
++                        android:textColor="@color/white" />
++                </LinearLayout>
++
++                <LinearLayout
++                    android:layout_width="0dp"
++                    android:layout_height="match_parent"
++                    android:layout_weight="0.25"
++                    android:orientation="vertical">
++
++                    <ImageView
++                        android:id="@+id/cartTab"
++                        android:layout_width="24dp"
++                        android:layout_height="24dp"
++                        android:layout_gravity="center"
++                        android:layout_margin="5dp"
++                        android:src="@drawable/btn_3"
++                        app:tint="@color/white" />
++
++                    <TextView
++                        android:id="@+id/cartTextView"
++                        android:layout_width="match_parent"
++                        android:layout_height="wrap_content"
++                        android:text="Cart"
++                        android:textAlignment="center"
++                        android:textColor="@color/white" />
++                </LinearLayout>
++
++                <LinearLayout
++                    android:layout_width="0dp"
++                    android:layout_height="match_parent"
++                    android:layout_weight="0.25"
++                    android:orientation="vertical">
++
++                    <ImageView
++                        android:id="@+id/profileTab"
++                        android:layout_width="24dp"
++                        android:layout_height="24dp"
++                        android:layout_gravity="center"
++                        android:layout_margin="5dp"
++                        android:src="@drawable/btn_4"
++                        app:tint="@color/white" />
++
++                    <TextView
++                        android:id="@+id/profileTextView"
++                        android:layout_width="match_parent"
++                        android:layout_height="wrap_content"
++                        android:text="Profile"
++                        android:textAlignment="center"
++                        android:textColor="@color/white" />
++                </LinearLayout>
++            </LinearLayout>
++        </com.google.android.material.bottomappbar.BottomAppBar>
++
++    </androidx.coordinatorlayout.widget.CoordinatorLayout>
++</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+diff --git a/app/src/main/res/layout/slide_item_container.xml b/app/src/main/res/layout/slide_item_container.xml
+new file mode 100644
+index 0000000..aa11e63
+--- /dev/null
++++ b/app/src/main/res/layout/slide_item_container.xml
+@@ -0,0 +1,9 @@
++<?xml version="1.0" encoding="utf-8"?>
++<ImageView xmlns:android="http://schemas.android.com/apk/res/android"
++    android:id="@+id/imageSlide"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    android:adjustViewBounds="false"
++    android:scaleType="centerCrop">
++
++</ImageView>
+\ No newline at end of file
+diff --git a/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml b/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml
+new file mode 100644
+index 0000000..6f3b755
+--- /dev/null
++++ b/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="utf-8"?>
++<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
++    <background android:drawable="@drawable/ic_launcher_background" />
++    <foreground android:drawable="@drawable/ic_launcher_foreground" />
++    <monochrome android:drawable="@drawable/ic_launcher_foreground" />
++</adaptive-icon>
+\ No newline at end of file
+diff --git a/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml b/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml
+new file mode 100644
+index 0000000..6f3b755
+--- /dev/null
++++ b/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="utf-8"?>
++<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
++    <background android:drawable="@drawable/ic_launcher_background" />
++    <foreground android:drawable="@drawable/ic_launcher_foreground" />
++    <monochrome android:drawable="@drawable/ic_launcher_foreground" />
++</adaptive-icon>
+\ No newline at end of file
+diff --git a/app/src/main/res/mipmap-hdpi/ic_launcher.webp b/app/src/main/res/mipmap-hdpi/ic_launcher.webp
+new file mode 100644
+index 0000000..c209e78
+Binary files /dev/null and b/app/src/main/res/mipmap-hdpi/ic_launcher.webp differ
+diff --git a/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp b/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp
+new file mode 100644
+index 0000000..b2dfe3d
+Binary files /dev/null and b/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp differ
+diff --git a/app/src/main/res/mipmap-mdpi/ic_launcher.webp b/app/src/main/res/mipmap-mdpi/ic_launcher.webp
+new file mode 100644
+index 0000000..4f0f1d6
+Binary files /dev/null and b/app/src/main/res/mipmap-mdpi/ic_launcher.webp differ
+diff --git a/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp b/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp
+new file mode 100644
+index 0000000..62b611d
+Binary files /dev/null and b/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp differ
+diff --git a/app/src/main/res/mipmap-xhdpi/ic_launcher.webp b/app/src/main/res/mipmap-xhdpi/ic_launcher.webp
+new file mode 100644
+index 0000000..948a307
+Binary files /dev/null and b/app/src/main/res/mipmap-xhdpi/ic_launcher.webp differ
+diff --git a/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp b/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp
+new file mode 100644
+index 0000000..1b9a695
+Binary files /dev/null and b/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp differ
+diff --git a/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp b/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp
+new file mode 100644
+index 0000000..28d4b77
+Binary files /dev/null and b/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp differ
+diff --git a/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp b/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp
+new file mode 100644
+index 0000000..9287f50
+Binary files /dev/null and b/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp differ
+diff --git a/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp b/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp
+new file mode 100644
+index 0000000..aa7d642
+Binary files /dev/null and b/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp differ
+diff --git a/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp b/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp
+new file mode 100644
+index 0000000..9126ae3
+Binary files /dev/null and b/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp differ
+diff --git a/app/src/main/res/values/colors.xml b/app/src/main/res/values/colors.xml
+new file mode 100644
+index 0000000..4135eb1
+--- /dev/null
++++ b/app/src/main/res/values/colors.xml
+@@ -0,0 +1,10 @@
++<?xml version="1.0" encoding="utf-8"?>
++<resources>
++    <color name="black">#FF000000</color>
++    <color name="white">#FFFFFFFF</color>
++    <color name="orange">#FF7427</color>
++    <color name="yellow">#FFC107</color>
++    <color name="darkBlue">#252836</color>
++    <color name="mainColor">#1F1D2B</color>
++    <color name="subTitleColor">#9F9A9A</color>
++</resources>
+\ No newline at end of file
+diff --git a/app/src/main/res/values/strings.xml b/app/src/main/res/values/strings.xml
+new file mode 100644
+index 0000000..cb20498
+--- /dev/null
++++ b/app/src/main/res/values/strings.xml
+@@ -0,0 +1,3 @@
++<resources>
++    <string name="app_name">movie_app_ui</string>
++</resources>
+\ No newline at end of file
+diff --git a/app/src/main/res/values/themes.xml b/app/src/main/res/values/themes.xml
+new file mode 100644
+index 0000000..26d27ac
+--- /dev/null
++++ b/app/src/main/res/values/themes.xml
+@@ -0,0 +1,11 @@
++<resources>
++    <!-- Base application theme. -->
++    <style name="Base.Theme.Movie_app_ui" parent="Theme.MaterialComponents.DayNight.NoActionBar">
++        <!-- Customize your light theme here. -->
++        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
++
++        <item name="colorPrimaryDark">@color/mainColor</item>
++    </style>
++
++    <style name="Theme.Movie_app_ui" parent="Base.Theme.Movie_app_ui" />
++</resources>
+\ No newline at end of file
+diff --git a/app/src/main/res/wide.jpg b/app/src/main/res/wide.jpg
+new file mode 100644
+index 0000000..5874218
+Binary files /dev/null and b/app/src/main/res/wide.jpg differ
+diff --git a/app/src/main/res/wide1.jpg b/app/src/main/res/wide1.jpg
+new file mode 100644
+index 0000000..6f0a64b
+Binary files /dev/null and b/app/src/main/res/wide1.jpg differ
+diff --git a/app/src/main/res/wide3.jpg b/app/src/main/res/wide3.jpg
+new file mode 100644
+index 0000000..19ab2ef
+Binary files /dev/null and b/app/src/main/res/wide3.jpg differ
+diff --git a/app/src/main/res/xml/backup_rules.xml b/app/src/main/res/xml/backup_rules.xml
+new file mode 100644
+index 0000000..fa0f996
+--- /dev/null
++++ b/app/src/main/res/xml/backup_rules.xml
+@@ -0,0 +1,13 @@
++<?xml version="1.0" encoding="utf-8"?><!--
++   Sample backup rules file; uncomment and customize as necessary.
++   See https://developer.android.com/guide/topics/data/autobackup
++   for details.
++   Note: This file is ignored for devices older that API 31
++   See https://developer.android.com/about/versions/12/backup-restore
++-->
++<full-backup-content>
++    <!--
++   <include domain="sharedpref" path="."/>
++   <exclude domain="sharedpref" path="device.xml"/>
++-->
++</full-backup-content>
+\ No newline at end of file
+diff --git a/app/src/main/res/xml/data_extraction_rules.xml b/app/src/main/res/xml/data_extraction_rules.xml
+new file mode 100644
+index 0000000..9ee9997
+--- /dev/null
++++ b/app/src/main/res/xml/data_extraction_rules.xml
+@@ -0,0 +1,19 @@
++<?xml version="1.0" encoding="utf-8"?><!--
++   Sample data extraction rules file; uncomment and customize as necessary.
++   See https://developer.android.com/about/versions/12/backup-restore#xml-changes
++   for details.
++-->
++<data-extraction-rules>
++    <cloud-backup>
++        <!-- TODO: Use <include> and <exclude> to control what is backed up.
++        <include .../>
++        <exclude .../>
++        -->
++    </cloud-backup>
++    <!--
++    <device-transfer>
++        <include .../>
++        <exclude .../>
++    </device-transfer>
++    -->
++</data-extraction-rules>
+\ No newline at end of file
+diff --git a/app/src/test/java/com/example/movie_app_ui/ExampleUnitTest.java b/app/src/test/java/com/example/movie_app_ui/ExampleUnitTest.java
+new file mode 100644
+index 0000000..213009e
+--- /dev/null
++++ b/app/src/test/java/com/example/movie_app_ui/ExampleUnitTest.java
+@@ -0,0 +1,17 @@
++package com.example.movie_app_ui;
++
++import org.junit.Test;
++
++import static org.junit.Assert.*;
++
++/**
++ * Example local unit test, which will execute on the development machine (host).
++ *
++ * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
++ */
++public class ExampleUnitTest {
++    @Test
++    public void addition_isCorrect() {
++        assertEquals(4, 2 + 2);
++    }
++}
+\ No newline at end of file
+diff --git a/build.gradle.kts b/build.gradle.kts
+new file mode 100644
+index 0000000..38f547d
+--- /dev/null
++++ b/build.gradle.kts
+@@ -0,0 +1,4 @@
++// Top-level build file where you can add configuration options common to all sub-projects/modules.
++plugins {
++    id("com.android.application") version "8.1.1" apply false
++}
+\ No newline at end of file
+diff --git a/gradle.properties b/gradle.properties
+new file mode 100644
+index 0000000..3e927b1
+--- /dev/null
++++ b/gradle.properties
+@@ -0,0 +1,21 @@
++# Project-wide Gradle settings.
++# IDE (e.g. Android Studio) users:
++# Gradle settings configured through the IDE *will override*
++# any settings specified in this file.
++# For more details on how to configure your build environment visit
++# http://www.gradle.org/docs/current/userguide/build_environment.html
++# Specifies the JVM arguments used for the daemon process.
++# The setting is particularly useful for tweaking memory settings.
++org.gradle.jvmargs=-Xmx2048m -Dfile.encoding=UTF-8
++# When configured, Gradle will run in incubating parallel mode.
++# This option should only be used with decoupled projects. More details, visit
++# http://www.gradle.org/docs/current/userguide/multi_project_builds.html#sec:decoupled_projects
++# org.gradle.parallel=true
++# AndroidX package structure to make it clearer which packages are bundled with the
++# Android operating system, and which are packaged with your app's APK
++# https://developer.android.com/topic/libraries/support-library/androidx-rn
++android.useAndroidX=true
++# Enables namespacing of each library's R class so that its R class includes only the
++# resources declared in the library itself and none from the library's dependencies,
++# thereby reducing the size of the R class for that library
++android.nonTransitiveRClass=true
+\ No newline at end of file
+diff --git a/gradle/wrapper/gradle-wrapper.jar b/gradle/wrapper/gradle-wrapper.jar
+new file mode 100644
+index 0000000..e708b1c
+Binary files /dev/null and b/gradle/wrapper/gradle-wrapper.jar differ
+diff --git a/gradle/wrapper/gradle-wrapper.properties b/gradle/wrapper/gradle-wrapper.properties
+new file mode 100644
+index 0000000..d8f682f
+--- /dev/null
++++ b/gradle/wrapper/gradle-wrapper.properties
+@@ -0,0 +1,6 @@
++#Tue Oct 24 11:36:25 ICT 2023
++distributionBase=GRADLE_USER_HOME
++distributionPath=wrapper/dists
++distributionUrl=https\://services.gradle.org/distributions/gradle-8.0-bin.zip
++zipStoreBase=GRADLE_USER_HOME
++zipStorePath=wrapper/dists
+diff --git a/gradlew b/gradlew
+new file mode 100644
+index 0000000..4f906e0
+--- /dev/null
++++ b/gradlew
+@@ -0,0 +1,185 @@
++#!/usr/bin/env sh
++
++#
++# Copyright 2015 the original author or authors.
++#
++# Licensed under the Apache License, Version 2.0 (the "License");
++# you may not use this file except in compliance with the License.
++# You may obtain a copy of the License at
++#
++#      https://www.apache.org/licenses/LICENSE-2.0
++#
++# Unless required by applicable law or agreed to in writing, software
++# distributed under the License is distributed on an "AS IS" BASIS,
++# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++# See the License for the specific language governing permissions and
++# limitations under the License.
++#
++
++##############################################################################
++##
++##  Gradle start up script for UN*X
++##
++##############################################################################
++
++# Attempt to set APP_HOME
++# Resolve links: $0 may be a link
++PRG="$0"
++# Need this for relative symlinks.
++while [ -h "$PRG" ] ; do
++    ls=`ls -ld "$PRG"`
++    link=`expr "$ls" : '.*-> \(.*\)$'`
++    if expr "$link" : '/.*' > /dev/null; then
++        PRG="$link"
++    else
++        PRG=`dirname "$PRG"`"/$link"
++    fi
++done
++SAVED="`pwd`"
++cd "`dirname \"$PRG\"`/" >/dev/null
++APP_HOME="`pwd -P`"
++cd "$SAVED" >/dev/null
++
++APP_NAME="Gradle"
++APP_BASE_NAME=`basename "$0"`
++
++# Add default JVM options here. You can also use JAVA_OPTS and GRADLE_OPTS to pass JVM options to this script.
++DEFAULT_JVM_OPTS='"-Xmx64m" "-Xms64m"'
++
++# Use the maximum available, or set MAX_FD != -1 to use that value.
++MAX_FD="maximum"
++
++warn () {
++    echo "$*"
++}
++
++die () {
++    echo
++    echo "$*"
++    echo
++    exit 1
++}
++
++# OS specific support (must be 'true' or 'false').
++cygwin=false
++msys=false
++darwin=false
++nonstop=false
++case "`uname`" in
++  CYGWIN* )
++    cygwin=true
++    ;;
++  Darwin* )
++    darwin=true
++    ;;
++  MINGW* )
++    msys=true
++    ;;
++  NONSTOP* )
++    nonstop=true
++    ;;
++esac
++
++CLASSPATH=$APP_HOME/gradle/wrapper/gradle-wrapper.jar
++
++
++# Determine the Java command to use to start the JVM.
++if [ -n "$JAVA_HOME" ] ; then
++    if [ -x "$JAVA_HOME/jre/sh/java" ] ; then
++        # IBM's JDK on AIX uses strange locations for the executables
++        JAVACMD="$JAVA_HOME/jre/sh/java"
++    else
++        JAVACMD="$JAVA_HOME/bin/java"
++    fi
++    if [ ! -x "$JAVACMD" ] ; then
++        die "ERROR: JAVA_HOME is set to an invalid directory: $JAVA_HOME
++
++Please set the JAVA_HOME variable in your environment to match the
++location of your Java installation."
++    fi
++else
++    JAVACMD="java"
++    which java >/dev/null 2>&1 || die "ERROR: JAVA_HOME is not set and no 'java' command could be found in your PATH.
++
++Please set the JAVA_HOME variable in your environment to match the
++location of your Java installation."
++fi
++
++# Increase the maximum file descriptors if we can.
++if [ "$cygwin" = "false" -a "$darwin" = "false" -a "$nonstop" = "false" ] ; then
++    MAX_FD_LIMIT=`ulimit -H -n`
++    if [ $? -eq 0 ] ; then
++        if [ "$MAX_FD" = "maximum" -o "$MAX_FD" = "max" ] ; then
++            MAX_FD="$MAX_FD_LIMIT"
++        fi
++        ulimit -n $MAX_FD
++        if [ $? -ne 0 ] ; then
++            warn "Could not set maximum file descriptor limit: $MAX_FD"
++        fi
++    else
++        warn "Could not query maximum file descriptor limit: $MAX_FD_LIMIT"
++    fi
++fi
++
++# For Darwin, add options to specify how the application appears in the dock
++if $darwin; then
++    GRADLE_OPTS="$GRADLE_OPTS \"-Xdock:name=$APP_NAME\" \"-Xdock:icon=$APP_HOME/media/gradle.icns\""
++fi
++
++# For Cygwin or MSYS, switch paths to Windows format before running java
++if [ "$cygwin" = "true" -o "$msys" = "true" ] ; then
++    APP_HOME=`cygpath --path --mixed "$APP_HOME"`
++    CLASSPATH=`cygpath --path --mixed "$CLASSPATH"`
++
++    JAVACMD=`cygpath --unix "$JAVACMD"`
++
++    # We build the pattern for arguments to be converted via cygpath
++    ROOTDIRSRAW=`find -L / -maxdepth 1 -mindepth 1 -type d 2>/dev/null`
++    SEP=""
++    for dir in $ROOTDIRSRAW ; do
++        ROOTDIRS="$ROOTDIRS$SEP$dir"
++        SEP="|"
++    done
++    OURCYGPATTERN="(^($ROOTDIRS))"
++    # Add a user-defined pattern to the cygpath arguments
++    if [ "$GRADLE_CYGPATTERN" != "" ] ; then
++        OURCYGPATTERN="$OURCYGPATTERN|($GRADLE_CYGPATTERN)"
++    fi
++    # Now convert the arguments - kludge to limit ourselves to /bin/sh
++    i=0
++    for arg in "$@" ; do
++        CHECK=`echo "$arg"|egrep -c "$OURCYGPATTERN" -`
++        CHECK2=`echo "$arg"|egrep -c "^-"`                                 ### Determine if an option
++
++        if [ $CHECK -ne 0 ] && [ $CHECK2 -eq 0 ] ; then                    ### Added a condition
++            eval `echo args$i`=`cygpath --path --ignore --mixed "$arg"`
++        else
++            eval `echo args$i`="\"$arg\""
++        fi
++        i=`expr $i + 1`
++    done
++    case $i in
++        0) set -- ;;
++        1) set -- "$args0" ;;
++        2) set -- "$args0" "$args1" ;;
++        3) set -- "$args0" "$args1" "$args2" ;;
++        4) set -- "$args0" "$args1" "$args2" "$args3" ;;
++        5) set -- "$args0" "$args1" "$args2" "$args3" "$args4" ;;
++        6) set -- "$args0" "$args1" "$args2" "$args3" "$args4" "$args5" ;;
++        7) set -- "$args0" "$args1" "$args2" "$args3" "$args4" "$args5" "$args6" ;;
++        8) set -- "$args0" "$args1" "$args2" "$args3" "$args4" "$args5" "$args6" "$args7" ;;
++        9) set -- "$args0" "$args1" "$args2" "$args3" "$args4" "$args5" "$args6" "$args7" "$args8" ;;
++    esac
++fi
++
++# Escape application args
++save () {
++    for i do printf %s\\n "$i" | sed "s/'/'\\\\''/g;1s/^/'/;\$s/\$/' \\\\/" ; done
++    echo " "
++}
++APP_ARGS=`save "$@"`
++
++# Collect all arguments for the java command, following the shell quoting and substitution rules
++eval set -- $DEFAULT_JVM_OPTS $JAVA_OPTS $GRADLE_OPTS "\"-Dorg.gradle.appname=$APP_BASE_NAME\"" -classpath "\"$CLASSPATH\"" org.gradle.wrapper.GradleWrapperMain "$APP_ARGS"
++
++exec "$JAVACMD" "$@"
+diff --git a/gradlew.bat b/gradlew.bat
+new file mode 100644
+index 0000000..107acd3
+--- /dev/null
++++ b/gradlew.bat
+@@ -0,0 +1,89 @@
++@rem
++@rem Copyright 2015 the original author or authors.
++@rem
++@rem Licensed under the Apache License, Version 2.0 (the "License");
++@rem you may not use this file except in compliance with the License.
++@rem You may obtain a copy of the License at
++@rem
++@rem      https://www.apache.org/licenses/LICENSE-2.0
++@rem
++@rem Unless required by applicable law or agreed to in writing, software
++@rem distributed under the License is distributed on an "AS IS" BASIS,
++@rem WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++@rem See the License for the specific language governing permissions and
++@rem limitations under the License.
++@rem
++
++@if "%DEBUG%" == "" @echo off
++@rem ##########################################################################
++@rem
++@rem  Gradle startup script for Windows
++@rem
++@rem ##########################################################################
++
++@rem Set local scope for the variables with windows NT shell
++if "%OS%"=="Windows_NT" setlocal
++
++set DIRNAME=%~dp0
++if "%DIRNAME%" == "" set DIRNAME=.
++set APP_BASE_NAME=%~n0
++set APP_HOME=%DIRNAME%
++
++@rem Resolve any "." and ".." in APP_HOME to make it shorter.
++for %%i in ("%APP_HOME%") do set APP_HOME=%%~fi
++
++@rem Add default JVM options here. You can also use JAVA_OPTS and GRADLE_OPTS to pass JVM options to this script.
++set DEFAULT_JVM_OPTS="-Xmx64m" "-Xms64m"
++
++@rem Find java.exe
++if defined JAVA_HOME goto findJavaFromJavaHome
++
++set JAVA_EXE=java.exe
++%JAVA_EXE% -version >NUL 2>&1
++if "%ERRORLEVEL%" == "0" goto execute
++
++echo.
++echo ERROR: JAVA_HOME is not set and no 'java' command could be found in your PATH.
++echo.
++echo Please set the JAVA_HOME variable in your environment to match the
++echo location of your Java installation.
++
++goto fail
++
++:findJavaFromJavaHome
++set JAVA_HOME=%JAVA_HOME:"=%
++set JAVA_EXE=%JAVA_HOME%/bin/java.exe
++
++if exist "%JAVA_EXE%" goto execute
++
++echo.
++echo ERROR: JAVA_HOME is set to an invalid directory: %JAVA_HOME%
++echo.
++echo Please set the JAVA_HOME variable in your environment to match the
++echo location of your Java installation.
++
++goto fail
++
++:execute
++@rem Setup the command line
++
++set CLASSPATH=%APP_HOME%\gradle\wrapper\gradle-wrapper.jar
++
++
++@rem Execute Gradle
++"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %GRADLE_OPTS% "-Dorg.gradle.appname=%APP_BASE_NAME%" -classpath "%CLASSPATH%" org.gradle.wrapper.GradleWrapperMain %*
++
++:end
++@rem End local scope for the variables with windows NT shell
++if "%ERRORLEVEL%"=="0" goto mainEnd
++
++:fail
++rem Set variable GRADLE_EXIT_CONSOLE if you need the _script_ return code instead of
++rem the _cmd.exe /c_ return code!
++if  not "" == "%GRADLE_EXIT_CONSOLE%" exit 1
++exit /b 1
++
++:mainEnd
++if "%OS%"=="Windows_NT" endlocal
++
++:omega
+diff --git a/settings.gradle.kts b/settings.gradle.kts
+new file mode 100644
+index 0000000..ee82045
+--- /dev/null
++++ b/settings.gradle.kts
+@@ -0,0 +1,18 @@
++pluginManagement {
++    repositories {
++        google()
++        mavenCentral()
++        gradlePluginPortal()
++    }
++}
++dependencyResolutionManagement {
++    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
++    repositories {
++        google()
++        mavenCentral()
++    }
++}
++
++rootProject.name = "movie_app_ui"
++include(":app")
++ 
+\ No newline at end of file
